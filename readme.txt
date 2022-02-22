@@ -1,4 +1,4 @@
-The folder contains a total of 4 subfolders: 
+The folder contains 4 subfolders: 
 
 i) diseaseAggregator: Contains a source code file (diseaseAggregator.cpp), a header file (diseaseAggregator.h), it's makefile and a file logfile_xxx with the statistics that the parent collects where xxx = his pid. It is the main application for the management of viruses and the parent of the processes that "generates" which will manage the questions. We will return to it's functionality later after we have completed the explanation of the content of the remaining files.
 
