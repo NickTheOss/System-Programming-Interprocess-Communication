@@ -64,30 +64,30 @@ function generate_age()
 
 
 
-if [ -z "$disFile" ] || [ -z "$countriesFile" ] || [ -z "$input_dir" ] || [ -z "$numFperD" ] || [ -z "$numRperF" ] ; then # an den exei dothei kapoio orisma
+if [ -z "$disFile" ] || [ -z "$countriesFile" ] || [ -z "$input_dir" ] || [ -z "$numFperD" ] || [ -z "$numRperF" ] ; then
 	echo Wrong arguments.
 	exit 1
 fi
 
-if [ ! -f "$disFile" ] || [ ! -f "$countriesFile" ]; then	# An den iparxoun ta arxeia
+if [ ! -f "$disFile" ] || [ ! -f "$countriesFile" ]; then	
 	echo Files do not exist
 	exit 1
 fi
 
 re='^[-+]?[0-9]+$'
-if ! [[ $numFperD =~ $re ]] || ! [[ $numRperF =~ $re ]]; then	# An oi arithmoi exoun dothei se lathos thesi
+if ! [[ $numFperD =~ $re ]] || ! [[ $numRperF =~ $re ]]; then
    echo error: Not a number.
    exit 1
 fi
 
-if [ "$numFperD" -le 0 ] || [ "$numRperF" -le 0 ]; then		# An oi arithmoi deneinai thetikoi
+if [ "$numFperD" -le 0 ] || [ "$numRperF" -le 0 ]; then	
 	echo Numbers must be greater than zero.
 	exit 1
 fi
 
-if [ ! -d "$input_dir" ] ; then		# an den iparxei o fakelos dimiourgise ton
+if [ ! -d "$input_dir" ] ; then		
 	mkdir $input_dir
-else 								# Alliws sviston kai ksanaftiakston
+else 							
 	rm -rf $input_dir
 	mkdir $input_dir
 fi
@@ -97,14 +97,14 @@ count=0
 while IFS= read -r line; do 	
 	line="${input_dir}/${line}" # string concatenation
 	countries[$count]=$line		
-	mkdir ${countries[$count]}	# dimiourgia ipofakelwn
+	mkdir ${countries[$count]}	
 	count=$(($count + 1))		
 done < $countriesFile
 
 folder_counter=$((${#countries[@]}*$numFperD)) 
 echo "Total subdirectories created = $folder_counter"
 
-#dimiourgoume ta paths me ta arxeia kathe xwras
+
 count=0
 for (( c=0; c<$numFperD; c++ ))
 do
@@ -120,14 +120,14 @@ do
 done
 
 
-# Kanoume to idio kai gia ton pinaka me tis astheneies
+
 count=0
 while IFS= read -r line; do
 	diseases[$count]=$line
 	count=$(($count + 1))
 done < $disFile
 
-# Eisagoume tis eggrafes me to format pou ipodiknietai stin ekfwnisi
+
 count=0
 for (( c=0; c<${#filesarray[@]}; c++ ))
 do
